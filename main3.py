@@ -19,10 +19,10 @@ from pathlib import Path
 import os
 import math
 
-train_images_path = Path("C:/Users/vaibhav1.mali/PycharmProjects/carobjectdetection/data/training_images")
-test_images_path = Path("C:/Users/vaibhav1.mali/PycharmProjects/carobjectdetection/data/testing_images")
+train_images_path = Path("training_images")
+test_images_path = Path("testing_images")
 
-train = pd.read_csv("C:/Users/vaibhav1.mali/PycharmProjects/carobjectdetection/data/train_solution_bounding_boxes (1).csv")
+train = pd.read_csv("train_solution_bounding_boxes (1).csv")
 train[['xmin', 'ymin', 'xmax', 'ymax']] = train[['xmin', 'ymin', 'xmax', 'ymax']].astype(int)
 train = train.groupby('image')[['xmin', 'ymin', 'xmax', 'ymax']].apply(lambda x: x.values.flatten().tolist()).reset_index()
 train.columns = ['image_name','coordinates']
@@ -78,7 +78,7 @@ def display_grid(df=train, n_items=3):
         display_from_dataframe(df.loc[index, :])
 
 
-display_image_from_file("C:/Users/vaibhav1.mali/PycharmProjects/carobjectdetection/data/training_images/vid_4_10520.jpg")
+display_image_from_file("training_images/vid_4_10520.jpg")
 display_grid()
 
 
